@@ -6,7 +6,19 @@
     <title>AI 戳戳樂</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com"/>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: sans-serif; text-align: center; background: #fdf0d5; margin: 0; padding: 20px; touch-action: manipulation; }
+        h1 { color: #c1121f; text-shadow: 1px 1px 2px #ccc; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 400px; margin: 0 auto; }
+        .hole { 
+            aspect-ratio: 1/1; background: radial-gradient(circle, #f03e3e, #c1121f);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: gold; font-size: 24px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 6px #780000; position: relative; border: 4px solid #780000;
+        }
+        .hole.poked { background: #e9ecef; color: #333; box-shadow: none; border: 2px dashed #adb5bd; transform: translateY(4px); }
+        .prize-text { animation: jackInTheBox 0.5s; font-size: 16px; color: #333; }
+    </style>
 </head>
 <body>
     <h1>🧧 春節戳戳樂</h1>
