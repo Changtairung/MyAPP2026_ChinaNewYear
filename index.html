@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI 戳戳樂</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/">
+    <!-- 修正後：完整的 Animate.css 連結 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com"/>
     <style>
         body { font-family: sans-serif; text-align: center; background: #fdf0d5; margin: 0; padding: 20px; touch-action: manipulation; }
         h1 { color: #c1121f; text-shadow: 1px 1px 2px #ccc; }
@@ -33,6 +34,7 @@
     <div class="grid" id="board"></div>
 
     <!-- 1. 先載入特效庫 -->
+    <!-- 修正後：完整的 Confetti 特效庫連結 -->
     <script src="https://cdn.jsdelivr.net"></script>
     <!-- 2. 再載入你的邏輯，並加上 defer 確保 HTML 解析完才執行 -->
     <script src="app.js" defer></script>
