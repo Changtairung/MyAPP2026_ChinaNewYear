@@ -1,0 +1,9 @@
+{
+  "name": "AI 戳戳樂",
+  "short_name": "戳戳樂",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fdf0d5",
+  "theme_color": "#c1121f",
+  "icons": [  {    "src": "icon-192.png",    "sizes": "192x192",    "type": "image/png"  }]
+}
