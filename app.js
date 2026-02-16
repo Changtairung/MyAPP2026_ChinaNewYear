@@ -1,3 +1,19 @@
+const bgMusic = document.getElementById('bgMusic');
+const musicBtn = document.getElementById('musicBtn');
+let isMusicPlaying = false;
+
+// 點擊按鈕手動切換開關
+musicBtn.onclick = () => {
+    if (isMusicPlaying) {
+        bgMusic.pause();
+        musicBtn.innerText = "🔇 靜音中";
+    } else {
+        bgMusic.play();
+        musicBtn.innerText = "🎵 播放中";
+    }
+    isMusicPlaying = !isMusicPlaying;
+};
+
 const board = document.getElementById('board');
 //const prizes = ["🎁 大獎", "🍬 糖果", "🧧 紅包", "🏮 燈籠", "🍊 橘子", "⭐ 幸運", "🍫 巧克力", "💰 金幣", "🎟️ 禮券"];
 
@@ -47,6 +63,19 @@ function poke(el, index) {
     
     console.log("開始戳戳樂..."); // 除錯訊息 1
 
+    // --- 新增：第一次點擊格子時自動啟動背景音樂 ---
+    if (!isMusicPlaying) {
+        bgMusic.play().then(() => {
+            isMusicPlaying = true;
+            musicBtn.innerText = "🎵 播放中";
+        }).catch(err => console.log("等待使用者互動以播放音樂"));
+    }
+    // ------------------------------------------
+
+    // 原有的音效與特效邏輯...
+    popSound.currentTime = 0;
+    popSound.play();
+    
     // 1. 播放音效 (你目前成功的部分)
     if (typeof popSound !== 'undefined') popSound.play();
 

@@ -1,5 +1,5 @@
-const CACHE_NAME = 'poker-v3';
-const assets = ['./', './index.html', './app.js', './manifest.json'];
+const CACHE_NAME = 'poker-v4';
+const assets = ['./', './index.html', './app.js', './manifest.json', './HappyNewYear_Music.mp3'];
 
 self.addEventListener('install', (e) => {
     e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(assets)));
