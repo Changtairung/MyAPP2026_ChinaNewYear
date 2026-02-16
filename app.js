@@ -1,12 +1,12 @@
 const board = document.getElementById('board');
-const prizes = ["🎁 大獎", "🍬 糖果", "🧧 紅包", "🏮 燈籠", "🍊 橘子", "⭐ 幸運", "🍫 巧克力", "💰 金幣", "🎟️ 禮券"];
+//const prizes = ["🎁 大獎", "🍬 糖果", "🧧 紅包", "🏮 燈籠", "🍊 橘子", "⭐ 幸運", "🍫 巧克力", "💰 金幣", "🎟️ 禮券"];
 
 // 定義獎項與其出現權重 (總和建議為 100)
 const prizeSettings = [
-    { name: "🎁 超級大獎 (iPhone)", weight: 1 },   // 1% 機率
-    { name: "🧧 紅包 100 元", weight: 9 },         // 9% 機率
+    { name: "🎁 超級大獎 (iPhone)", weight: 5 },   // 5% 機率
+    { name: "🧧 紅包 100 元", weight: 15 },         // 15% 機率
     { name: "🍬 巧克力", weight: 30 },            // 30% 機率
-    { name: "💀 銘謝惠顧", weight: 60 }             // 60% 機率
+    { name: "💀 銘謝惠顧", weight: 50 }             // 50% 機率
 ];
 
 function getWeightedPrize() {
@@ -21,8 +21,8 @@ function getWeightedPrize() {
     }
     return prizeSettings[prizeSettings.length - 1].name; // 保險回傳最後一項
 }
-// 生成 9 個格子
-for (let i = 1; i <= 9; i++) {
+// 生成 12 個格子
+for (let i = 1; i <= 12; i++) {
     const hole = document.createElement('div');
     hole.className = 'hole';
     hole.innerText = i;
