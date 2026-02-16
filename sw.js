@@ -1,4 +1,4 @@
-const CACHE_NAME = 'poker-v6';
+const CACHE_NAME = 'poker-v7';
 const assets = ['./', './index.html', './app.js', './manifest.json', './HappyNewYear_Music.mp3'];
 
 self.addEventListener('install', (e) => {
