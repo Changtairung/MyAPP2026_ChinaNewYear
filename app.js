@@ -27,11 +27,12 @@ function shuffle(array) {
 let gamePool = shuffle([...initialPrizes]);
 
 // 生成 9 個格子
-for (let i = 1; i <= 9; i++) {
+for (let i = 0; i < 9; i++) {
     const hole = document.createElement('div');
     hole.className = 'hole';
-    hole.innerText = i;
-    hole.onclick = () => poke(hole);
+    hole.innerText = i + 1;
+    // 這裡傳入 i 作為索引
+    hole.onclick = () => poke(hole, i);
     board.appendChild(hole);
 }
 
