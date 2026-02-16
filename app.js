@@ -1,6 +1,26 @@
 const board = document.getElementById('board');
 const prizes = ["🎁 大獎", "🍬 糖果", "🧧 紅包", "🏮 燈籠", "🍊 橘子", "⭐ 幸運", "🍫 巧克力", "💰 金幣", "🎟️ 禮券"];
 
+// 定義獎項與其出現權重 (總和建議為 100)
+const prizeSettings = [
+    { name: "🎁 超級大獎 (iPhone)", weight: 1 },   // 1% 機率
+    { name: "🧧 紅包 100 元", weight: 9 },         // 9% 機率
+    { name: "🍬 巧克力", weight: 30 },            // 30% 機率
+    { name: "💀 銘謝惠顧", weight: 60 }             // 60% 機率
+];
+
+function getWeightedPrize() {
+    const randomNum = Math.random() * 100; // 產生 0-100 隨機數
+    let cumulativeWeight = 0;
+
+    for (const item of prizeSettings) {
+        cumulativeWeight += item.weight;
+        if (randomNum < cumulativeWeight) {
+            return item.name;
+        }
+    }
+    return prizeSettings[prizeSettings.length - 1].name; // 保險回傳最後一項
+}
 // 生成 9 個格子
 for (let i = 1; i <= 9; i++) {
     const hole = document.createElement('div');
@@ -39,16 +59,13 @@ function poke(el) {
         console.error("特效庫載入失敗:", e);
     }
 
-    // 檢查這行：如果上面沒讀到套件，這行會報錯並停止執行後面的程式
-    //if (typeof confetti === 'function') {
-    //    confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
-    //}
+    // 3. 獲取具備機率權重的獎項
+    const prize = getWeightedPrize();
 
-    // 隨機獎項
-    const prize = prizes[Math.floor(Math.random() * prizes.length)];
-    el.innerHTML = `<div class="prize-text">${prize}</div>`; // 替換文字
+    // 4. 更新畫面
+    el.innerHTML = `<span class="prize-text">${prize}</span>`; // 替換文字
     el.classList.add('poked'); // 改變外觀
     el.style.background = "#e9ecef"; // 強制變色確認邏輯有跑到這
     
-    console.log("獎項顯示成功:", prize); // 除錯訊息 3
+    console.log(`抽中獎項: ${prize} (隨機值: ${Math.round(Math.random()*100)})`); // 除錯訊息 3
 }
