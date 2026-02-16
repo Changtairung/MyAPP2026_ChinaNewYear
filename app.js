@@ -2,16 +2,16 @@ const board = document.getElementById('board');
 //const prizes = ["🎁 大獎", "🍬 糖果", "🧧 紅包", "🏮 燈籠", "🍊 橘子", "⭐ 幸運", "🍫 巧克力", "💰 金幣", "🎟️ 禮券"];
 
 // 1. 定義獎項內容
+// 修改後：確保陣列長度為 12
 const initialPrizes = [
     "🧧 紅包 8000 元", // 確保一定有一個大獎
     "🧧 紅包 1688 元",
     "🧧 紅包 888 元",
     "🍬 田季發燒肉",
     "🍬 好食鍋",
-    "🍬 軟糖",
-    "💀 軟糖",
-    "💀 恭喜發財",
-    "💀 馬到成功",
+    "🍬 軟糖", "💀 軟糖",
+    "💀 恭喜發財", "💀 恭喜發財",
+    "💀 馬到成功", "💀 馬到成功", "💀 馬到成功"
 ];
 
 // 2. 隨機打亂陣列的函式 (Fisher-Yates Shuffle)
@@ -23,14 +23,14 @@ function shuffle(array) {
     return array;
 }
 
-// 3. 產生這一局專屬的獎池
+// 3. 產生 12 個獎項的隨機獎池
 let gamePool = shuffle([...initialPrizes]);
 
-// 生成 9 個格子
-for (let i = 0; i < 9; i++) {
+// 生成 12 個格子
+for (let i = 0; i < 12; i++) {
     const hole = document.createElement('div');
     hole.className = 'hole';
-    hole.innerText = i + 1;
+    hole.innerText = i + 1; // 顯示數字 1~12
     // 這裡傳入 i 作為索引
     hole.onclick = () => poke(hole, i);
     board.appendChild(hole);
@@ -53,20 +53,13 @@ function poke(el, index) {
     // 震動回饋 (僅限 Android Chrome)
     if (navigator.vibrate) navigator.vibrate(50);
 
-    // 2. 噴發特效 (加入 try-catch 防止沒抓到套件導致後續當機)
-    try {
-        confetti({
-            particleCount: 150,
-            spread: 70,
-            origin: { y: 0.8 }
-        });
-        console.log("特效噴發成功"); // 除錯訊息 2
-    } catch (e) {
-        console.error("特效庫載入失敗:", e);
+    // 噴發特效
+    if (typeof confetti === 'function') {
+        confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
     }
 
     // 從獎池中根據格子的索引直接取出獎項
-    // 假設 index 是 0~8
+    // 假設 index 是 0~11
     const prize = gamePool[index];
     
     // 4. 更新畫面並加入動畫類別
