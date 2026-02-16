@@ -72,13 +72,6 @@ function poke(el, index) {
     }
     // ------------------------------------------
 
-    // 原有的音效與特效邏輯...
-    popSound.currentTime = 0;
-    popSound.play();
-    
-    // 1. 播放音效 (你目前成功的部分)
-    if (typeof popSound !== 'undefined') popSound.play();
-
     // 震動回饋 (僅限 Android Chrome)
     if (navigator.vibrate) navigator.vibrate(50);
 
