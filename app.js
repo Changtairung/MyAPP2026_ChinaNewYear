@@ -76,9 +76,21 @@ function poke(el, index) {
     if (navigator.vibrate) navigator.vibrate(50);
 
     // 噴發特效
-    if (typeof confetti === 'function') {
-        confetti({ particleCount: 150, spread: 70, origin: { y: 0.8 } });
-    }
+    // 2. 增加 100ms 延遲，確保特效在 DOM 更新後觸發
+    setTimeout(() => {
+        if (typeof confetti === 'function') {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }, // 從螢幕中下方噴出
+                zIndex: 9999      // 確保在最上層
+            });
+            console.log("噴發特效執行成功");
+        } else {
+            console.error("錯誤：找不到 confetti 特效庫，請檢查 HTML 連結！");
+        }
+    }, 100);
+
 
     // 從獎池中根據格子的索引直接取出獎項
     // 假設 index 是 0~11
