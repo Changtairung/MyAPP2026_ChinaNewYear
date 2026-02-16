@@ -5,17 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI 戳戳樂</title>
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/">
     <style>
         body { font-family: sans-serif; text-align: center; background: #fdf0d5; margin: 0; padding: 20px; touch-action: manipulation; }
         h1 { color: #c1121f; text-shadow: 1px 1px 2px #ccc; }
-	<button id="musicBtn" style="margin-bottom: 10px; padding: 5px 15px; border-radius: 20px; border: 1px solid #c1121f; background: white; color: #c1121f; cursor: pointer;">
-	    🎵 播放音樂
-	</button>
-	<!-- 隱藏的音訊元件 -->
-	<audio id="bgMusic" loop>
-	    <source src="HappyNewYear_Music.mp3" type="audio/mpeg">
-	</audio>
         .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 400px; margin: 0 auto; }
         .hole { 
             aspect-ratio: 1/1; background: radial-gradient(circle, #f03e3e, #c1121f);
@@ -29,6 +22,14 @@
 </head>
 <body>
     <h1>🧧 春節戳戳樂</h1>
+    <button id="musicBtn" style="margin-bottom: 10px; padding: 5px 15px; border-radius: 20px; border: 1px solid #c1121f; background: white; color: #c1121f; cursor: pointer;">
+        🎵 播放背景音樂
+    </button>
+    <!-- 隱藏的音訊元件 -->
+    <audio id="bgMusic" loop>
+        <source src="HappyNewYear_Music.mp3" type="audio/mpeg">
+    </audio>
+    <!-- 遊戲格子 -->
     <div class="grid" id="board"></div>
 
     <!-- 1. 先載入特效庫 -->
