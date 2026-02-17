@@ -20,7 +20,7 @@ const board = document.getElementById('board');
 // 1. 定義獎項內容
 // 修改後：確保陣列長度為 12
 const initialPrizes = [
-    "🧧 紅包 8000 元", // 確保一定有一個大獎
+    "🧧 紅包 8888 元", // 確保一定有一個大獎
     "🧧 紅包 1688 元",
     "🧧 紅包 888 元",
     "🍬 田季發燒肉",
